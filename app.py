@@ -108,7 +108,7 @@ with st.expander("Zählen statt Entscheiden", expanded=True):
         """
 1. **Entscheiden.** „Gibt es eine perfekte Paarung?“ beantworten augmentierende Wege in wenigen Schritten (Klasse **P**); die Demo benutzt dieses Verfahren für die Anzeige „Paarung vorhanden“.
 2. **Zählen.** Die Zahl der perfekten Paarungen ist die **Permanente**. Nach Valiant (1979) ist ihre Berechnung **#P-vollständig**: so schwer wie das Zählen der Lösungen jedes NP-Problems (Literatur, nicht gemessen).
-   Ein polynomielles Verfahren gäbe es nur, wenn P = NP gälte. Die besten hier gebauten exakten Verfahren (**Ryser**, **Glynn**) brauchen etwa 2^n · n Multiplikationen.
+   Ein polynomielles Verfahren würde P = NP (sogar FP = #P) nach sich ziehen. Die besten hier gebauten exakten Verfahren (**Ryser**, **Glynn**) brauchen etwa 2^n · n Multiplikationen.
 3. **Determinante.** Dieselbe Summe mit dem Vorzeichen der Permutation. Sie ist in n³ Schritten berechenbar (**Bareiss**, ganzzahlig) und stimmt mit der Permanente höchstens im Betrag überein, wenn sich die Vorzeichen zufällig oder
    durch die Struktur der Matrix ausgleichen.
         """
@@ -246,7 +246,7 @@ if st.session_state.get("est_on"):
         est = _estimator()
     st.plotly_chart(build_estimator(est), width="stretch", key="estimator_chart")
     st.markdown(_md_table(
-        ["Blöcke k", "n", "Permanente 2^k", "gemessene Streuung", "Rechnung √((2^k − 1) / N)", "Vorzeichenmatrizen für 10 %"],
+        ["Blöcke k", "n", "Permanente 2^k", "gemessene Streuung", "Rechnung √((2^k − 1) / N)", "Vorzeichenmatrizen für 10 % Standardabweichung"],
         [[r["k"], r["n"], fmt_int(r["per"]), f"{100 * r['rel']:.1f} %".replace(".", ","), f"{100 * r['predicted']:.1f} %".replace(".", ","), fmt_int(r["needed"])] for r in est["blocks"]],
     ))
     st.markdown(_md_table(
@@ -276,11 +276,11 @@ st.markdown(
 | Annahme | Was passiert, wenn sie verletzt ist | Wer setzt an |
 |---|---|---|
 | **Zählen ist #P-vollständig** | Das ist ein Satz der Literatur (Valiant 1979), die Demo misst ihn nicht. Sie misst nur die Kosten der hier gebauten Verfahren bis n = 20. | – |
-| **Ryser und Glynn sind die besten exakten Verfahren** | Die Demo kennt nur diese; ob es wesentlich schnellere exakte Verfahren gibt, ist offen (ein polynomielles gäbe es nur bei P = NP). | – |
+| **Ryser und Glynn sind die besten exakten Verfahren** | Die Demo kennt nur diese; ob es wesentlich schnellere exakte Verfahren gibt, ist offen (ein polynomielles würde P = NP, sogar FP = #P, nach sich ziehen). | – |
 | **Kosten = Multiplikationen** | Gezählt werden Multiplikationen einer Python-Umsetzung mit ganzen Zahlen; Additionen und der Zugriff auf Einträge fehlen. Das Verhältnis, nicht die Einzelzahl, trägt die Aussage. | – |
 | **Matrizen sind klein und zufällig** | Alle Messreihen gelten für Zufallsmatrizen bis n = 12 (Dichte 30 bis 70 %) und die genannten Sonderfälle; die Auslöschung hängt von der Struktur ab (Gitter und Blöcke verhalten sich anders). | – |
 | **Der Schätzer ist brauchbar** | Er ist erwartungstreu, aber seine Streuung wächst bei Blöcken exponentiell (Experiment 4); nur Matrizen bis n = 12 und die einfache Fassung sind gebaut. | – |
-| **Vorzeichen lassen sich richten** | Nur auf planaren Gittern (Kasteleyn); bei J3 und J4 gelingt es mit keinem der Muster. Allgemeine Aussagen (Pólya, Szegő) werden hier nicht bewiesen. | – |
+| **Vorzeichen lassen sich richten** | In der Demo gezeigt nur bei Gittern (Kasteleyn; allgemeiner bei planaren Graphen); bei J3 und J4 gelingt es mit keinem der Muster. Allgemeine Aussagen (Pólya, Szegő) werden hier nicht bewiesen. | – |
 | **Eine Paarung zu finden heißt sie zu zählen** | Existenz ist leicht (augmentierende Wege); die Zahl der Paarungen wächst bis n! (bei n = 20 über 2 · 10^18). | – |
 """
 )

@@ -332,5 +332,5 @@ def verdict_estimator(res: dict) -> tuple:
     return "warning", (
         f"Auf Zufallsmatrizen (Dichte 50 %) liegt die relative Streuung des Schätzers aus {fmt_int(res['samples'])} Vorzeichenmatrizen bei {fmt_percent(rnd[0]['mean_rel'])} (n = {rnd[0]['n']}) bis "
         f"{fmt_percent(rnd[-1]['mean_rel'])} (n = {rnd[-1]['n']}): brauchbar. Bei Blöcken aus J2 beträgt sie nach der Rechnung exakt √((2^k − 1) / N): für k = {last['k']} (n = {last['n']}) vorhergesagt {fmt_percent(last['predicted'])}, "
-        f"gemessen {fmt_percent(last['rel'])}; für 10 % Fehler braucht man {fmt_int(last['needed'])} Vorzeichenmatrizen, und die Zahl verdoppelt sich mit jedem Block."
+        f"gemessen {fmt_percent(last['rel'])}; für eine Standardabweichung von 10 % braucht man etwa {fmt_int(last['needed'])} Vorzeichenmatrizen, und die Zahl wird mit jedem Block etwa verdoppelt."
     )

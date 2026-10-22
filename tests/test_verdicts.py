@@ -174,4 +174,4 @@ def test_verdict_estimator_quotes_random_and_block_streuung():
     kind, text = ev.verdict_estimator(res)
     assert kind == "warning"
     assert "aus 1.000 Vorzeichenmatrizen bei 5 % (n = 6) bis 10,5 % (n = 12): brauchbar." in text
-    assert "für k = 6 (n = 12) vorhergesagt 25,1 %, gemessen 22,2 %; für 10 % Fehler braucht man 6.300 Vorzeichenmatrizen" in text
+    assert "für k = 6 (n = 12) vorhergesagt 25,1 %, gemessen 22,2 %; für eine Standardabweichung von 10 % braucht man etwa 6.300 Vorzeichenmatrizen" in text
