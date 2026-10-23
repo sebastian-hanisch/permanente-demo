@@ -36,7 +36,7 @@ def build_pdf(a: ev.Analysis) -> bytes:
     _para(pdf, 5.5, ev.verdict_main(a)[1])
     if a.estimate is not None:
         e = a.estimate
-        _para(pdf, 5.5, f"Schaetzer (Godsil-Gutman, {ev.fmt_int(e.samples)} Vorzeichenmatrizen, Illustration): {ev.fmt_fraction(e.mean)} gegen die Permanente {ev.fmt_int(a.per)}.")
+        _para(pdf, 5.5, f"Schätzer (Godsil-Gutman, {ev.fmt_int(e.samples)} Vorzeichenmatrizen, Illustration): {ev.fmt_fraction(e.mean)} gegen die Permanente {ev.fmt_int(a.per)}.")
     pdf.ln(1)
     pdf.set_font("Helvetica", "B", 11)
     pdf.cell(0, 7, "Matrix", new_x="LMARGIN", new_y="NEXT")
